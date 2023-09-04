@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JS Quiz</title>
+    <link rel="stylesheet" href="index.css">
+  
+</head>
+
+<body>
+    <div class="div">
+    <h1>Quiz App</h1>
+    <p id="q-para"></p>
+    <p id="opt-para"></p>
+    </div>
+
+
+    <script>
+        var q_area = document.getElementById("q-para")
+        var opt_area = document.getElementById("opt-para")
+       
+
+        var questions = [
+            {
+                question: "Q1. Html Stand For?",
+                option: ["Hypertext Markup Language", "Hypertext Markdown Language", "Hyperloop Machine Language", "Hypersheet markup language"],
+                correctAns: "Hypertext Markup Language"
+            },
+            {
+                question: "Q2. What does CSS stand for?",
+                option: ["Central Style Sheets", "Cascading Style Sheets", "Cascading Simple Sheets", "Cars SUVs Sailboats"],
+                correctAns: "Cascading Style Sheets"
+            },
+            {
+                question: "Q3. What year was JavaScript launched?",
+                option: ["1996", "1998", "1978", "1995"],
+                correctAns: "1995"
+            },
+            {
+                question: "Q4. Who Invented Computer?",
+                option: ["Brendan Eich", "Charles Babbage", "Tim Berners-Lee", "none of the above"],
+                correctAns: "Charles Babbage"
+            },
+            {
+                question: "Q5. Where in an HTML document is the correct place to refer to an external style sheet?",
+                option: ["In the <head>section", "In the <body>seection", "At the end of the document", "All of these" ],
+                correctAns: "In the <head>section"
+
+            },
+            {
+                question: "Q6. Which HTML tag is used to define an internal style sheet?",
+                option: ["css", "style", "script", "none of these" ],
+                correctAns: "style"
+            },
+            {
+                question: "Q7. Which HTML attribute is used to define inline styles?",
+                option: ["font", "style", "styles", "class" ],
+                correctAns: "style",
+               
+            },
+            {
+                question: "Q8. How do you insert a comment in a CSS file?",
+                option: ["//this is a comment//", "'this is a comment", "/*this is a comment*/", "//this is a comment" ],
+                correctAns: "/*this is a comment*/",
+            },
+            {
+                question: "Q9. Which property is used to change the background color?",
+                option: ["background-color", "'bgcolor", "color", "font-color" ],
+                correctAns: "background-color", 
+            },
+            {
+                question: "Q10. Which CSS property controls the text size?",
+                option: ["text-size", "font-size", "text-style", "font-style" ],
+                correctAns: "font-size", 
+            
+            }
+
+
+        ]
+
+        var currentIndex = 0;
+        var currentScore = 0;
+
+        function showQstn() {
+            q_area.innerHTML = questions[currentIndex].question;
+            opt_area.innerHTML = "";
+
+            questions[currentIndex].option.forEach((val) => {
+                var listElm = document.createElement("li");
+                listElm.innerHTML = val;
+                opt_area.appendChild(listElm);
+                listElm.addEventListener("click", () => { chkAns(val)})
+            })
+        }
+        function chkAns(ans) {
+            
+            console.log(ans)
+            if (ans == questions[currentIndex].correctAns) {
+                currentScore = (currentScore + 1)
+                console.log(currentScore)
+            }
+            else {
+                console.log(currentScore)
+            }
+
+            if (currentIndex == questions.length - 1) {
+                document.write("<h1>Quiz Completed")
+                document.write("<h3>Your Score: ", currentScore, "/", questions.length)
+            }
+            else {
+                currentIndex = (currentIndex + 1)
+                showQstn();
+            }
+        }
+        showQstn();
+    </script>
+
+
+
+
+
+</body>
+
+</html>
